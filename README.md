@@ -7,3 +7,4 @@
 #4 run command npm install
 #5 run command npx react-native run-ios for run in ios device
 #6 run command npx react-native run-android for run in android device
+
