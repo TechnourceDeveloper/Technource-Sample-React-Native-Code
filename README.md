@@ -1,5 +1,6 @@
 # Technource-Sample-React-Native-Code
 
+# Setup
 #1 Setup React native environments, 
 #2 install Android studio and Xcode
 #3 clone project
