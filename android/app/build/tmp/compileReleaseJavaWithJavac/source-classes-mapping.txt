@@ -1,0 +1,9 @@
+com/tcreactnativesample/BuildConfig.java
+ com.tcreactnativesample.BuildConfig
+com/tcreactnativesample/MainActivity.java
+ com.tcreactnativesample.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/tcreactnativesample/MainApplication.java
+ com.tcreactnativesample.MainApplication
+ com.tcreactnativesample.MainApplication$1

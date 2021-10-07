@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TCReactNativeSample.iml" filepath="$PROJECT_DIR$/.idea/modules/TCReactNativeSample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/TCReactNativeSample.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/TCReactNativeSample.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2081160930/TCReactNativeSample.react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-2081160930/TCReactNativeSample.react-native-async-storage_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1874663358/TCReactNativeSample.react-native-bootsplash.iml" filepath="$PROJECT_DIR$/.idea/modules/-1874663358/TCReactNativeSample.react-native-bootsplash.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1077157286/TCReactNativeSample.react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/-1077157286/TCReactNativeSample.react-native-community_masked-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/568488893/TCReactNativeSample.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/568488893/TCReactNativeSample.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1508348134/TCReactNativeSample.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/1508348134/TCReactNativeSample.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1511110782/TCReactNativeSample.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/1511110782/TCReactNativeSample.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1539671353/TCReactNativeSample.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/1539671353/TCReactNativeSample.react-native-vector-icons.iml" />
+    </modules>
+  </component>
+</project>
