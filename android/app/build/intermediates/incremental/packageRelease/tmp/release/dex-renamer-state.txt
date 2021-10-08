@@ -1,4 +1,4 @@
-#Thu Oct 07 15:30:53 IST 2021
-base.0=/Users/technource/Documents/rushika/react-native/TCReactNativeSample/android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+#Fri Oct 08 14:59:16 IST 2021
+base.0=/Users/technource/Documents/rushika/react-native/Technource-Sample-React-Native-Code/android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

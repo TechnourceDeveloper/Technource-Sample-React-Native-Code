@@ -6,16 +6,10 @@ const CustomInput = props => {
   return (
     <Input
       {...props}
-      ref={props.forwardRef}
       inputStyle={props.inputStyle}
-      inputContainerStyle={[props.inputContainerStyle, styles.inputContainer]}
-      labelStyle={[
-        props.labelStyle,
-        styles.label,
-      ]}
+      inputContainerStyle={styles.inputContainer}
       placeholderTextColor={props.placeholderTextColor? props.placeholderTextColor:"#587DAA"}
-      multiline = {props.multiline?true:false}
-      errorStyle={styles.error}
+      multiline = {false}
       >
       {props.children}
     </Input>

@@ -55,30 +55,25 @@ var db = openDatabase({ name: 'UserDatabase.db' });
 					        'DELETE FROM  table_card where child_id=?',
 					        [id],
 					        (tx, results) => {
-					          console.log('Results', results.rowsAffected);
-					          if (results.rowsAffected > 0) {
 					            	showMessage({
 							          message: "Removed Successfully",
 							          type: "default",
-							          backgroundColor: "#0F0", // background color
+							          backgroundColor: "#1E6BB9", // background color
 							          color: "#FFF", // text color
 							        });
 					          		setId(0)
 					           		_fetchData()
-					          } else {
-					             showMessage({
+					        }
+					      );
+					    });
+		          } else {
+		              showMessage({
 							        message: "Error",
 							        description: "Something wents wrong",
 							        type: "default",
 							        backgroundColor: "#F00", // background color
 							        color: "#FFF", // text color
 							      });
-					          }
-					        }
-					      );
-					    });
-		          } else {
-		            console.log('Please insert a valid User Id');
 		          }
 		        }
 		      );

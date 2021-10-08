@@ -6,7 +6,10 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-  
+  expiryDateContainer:{
+    flexDirection: 'row',
+    width:300
+  },
 	inputStyle:{
 	    padding:3,
 	    marginTop:10,
@@ -23,25 +26,45 @@ const Styles = StyleSheet.create({
         alignItems:'center', 
         justifyContent:'center'
 	  },
+
+	  dateInputStyle:{
+	    padding:3,
+	    marginTop:10,
+	    paddingLeft:10,
+	    paddingRight:10,
+	    backgroundColor:'white',
+	    borderRadius:5,
+	    width:60,
+	    borderWidth: 1,
+    	borderColor: '#1E6BB9',
+        color:'#3A3A3A',
+        height: 40,
+	  },
    
     buttonBg:{
     	borderRadius: 20,
 	    alignContent: 'center',
-	    width: '80%',
+	    width:280,
 	    alignSelf: 'center',
 	    backgroundColor:'#1E6BB9',
 	    marginTop: 10,
 	    flexDirection:'row',
 	    justifyContent: 'center',
 	    alignItems: 'center',
-	    padding:10
+	    padding:10,
+	    textAlign: 'center'
+
 	},
+	
 	buttonText:{
 		color:"white",
-		fontSize:16,
+		fontSize:14,
 		textAlign: 'center',
 	    fontWeight: "bold",
-	    marginTop:3
+	    marginTop:3,
+	    alignItems: 'center',
+	    width:280
+
 	}
 })
 export {Styles}

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/technource/Documents/rushika/react-native/TCReactNativeSample/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml",
+            "outputFile": "/Users/technource/Documents/rushika/react-native/Technource-Sample-React-Native-Code/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml",
             "map": [
                 {
                     "source": "/Users/technource/.gradle/caches/transforms-3/5646db46e2cfb43e7b3d42f3054c498c/transformed/core-1.5.0/res/values-ne/values-ne.xml",

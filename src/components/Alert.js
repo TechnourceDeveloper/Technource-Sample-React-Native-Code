@@ -61,7 +61,7 @@ const Alert = props => {
                 value={limit.toString() == 0?"":limit.toString()}
               />
            :
-           <Text style={{ fontSize: 20, textAlign: 'center', padding: 10}}>{props.message}</Text>
+           <Text style={{ fontSize: 20, textAlign: 'center', padding: 10, color:"black"}}>{props.message}</Text>
       }
         <View style={styles.btnContainer}>{buttonBlock}</View>
       </>
@@ -72,10 +72,10 @@ const Alert = props => {
 export {Alert}
 
 const styles = StyleSheet.create({
-   buttonBg:{
+  buttonBg:{
       borderRadius: 20,
       alignContent: 'center',
-      width: '40%',
+      width:'50%',
       alignSelf: 'center',
       backgroundColor:'#1E6BB9',
       marginTop: 10,
@@ -83,14 +83,19 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       padding:10,
-      marginHorizontal: 5
+      textAlign: 'center',
+      marginHorizontal:5
+
   },
   buttonText:{
     color:"white",
-    fontSize:16,
+    fontSize:14,
     textAlign: 'center',
       fontWeight: "bold",
-      marginTop:3
+      marginTop:3,
+      alignItems: 'center',
+      width:'50%'
+
   },
   inputStyle:{
       flexDirection: 'row',

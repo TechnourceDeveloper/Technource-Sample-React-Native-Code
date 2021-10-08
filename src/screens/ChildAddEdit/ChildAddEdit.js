@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import {Styles} from './Styles'
 import { Formik } from "formik";
 import * as yup from 'yup'
@@ -44,7 +44,7 @@ const ChildAddEdit = ({route, navigation}) =>
 			          	showMessage({
 						          message: "Update Successfully",
 						          type: "default",
-						          backgroundColor: "#0F0", // background color
+						          backgroundColor: "#1E6BB9", // background color
 						          color: "#FFF", // text color
 						        });
 			           	navigation.goBack()
@@ -74,7 +74,7 @@ const ChildAddEdit = ({route, navigation}) =>
 			          	showMessage({
 						          message: "Insert Successfully",
 						          type: "default",
-						          backgroundColor: "#0F0", // background color
+						          backgroundColor: "#1E6BB9", // background color
 						          color: "#FFF", // text color
 						        });
 			           	navigation.goBack()
@@ -128,7 +128,9 @@ const ChildAddEdit = ({route, navigation}) =>
 
 		return(
 			<SafeAreaView style = {Styles.container}>
-				<View>
+				<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+				<View  style={{ flex: 1, justifyContent:'center', alignContent: 'center',alignItems:'center', alignSelf:'center' }}>
+				       
 				       
 						<Formik
 								initialValues={{ name:child.name, age: child.age.toString()}}
@@ -167,6 +169,7 @@ const ChildAddEdit = ({route, navigation}) =>
 								returnKeyType='next'
 								onChangeText={handleChange('age')}
 								keyboardType='numeric'
+								maxLength={3}
 								value={values.age.toString()=='0'?"":values.age.toString()}
 								onBlur={() => setFieldTouched('age')}
 								errorMessage={touched.age && errors.age}
@@ -183,6 +186,7 @@ const ChildAddEdit = ({route, navigation}) =>
 								)}
 							</Formik>
 				</View>
+				</ScrollView>
 			</SafeAreaView>
 		);
 	}

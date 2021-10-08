@@ -24,24 +24,29 @@ const Styles = StyleSheet.create({
         justifyContent:'center'
 	  },
    
-    buttonBg:{
+     buttonBg:{
     	borderRadius: 20,
 	    alignContent: 'center',
-	    width: '80%',
+	    width:280,
 	    alignSelf: 'center',
 	    backgroundColor:'#1E6BB9',
 	    marginTop: 10,
 	    flexDirection:'row',
 	    justifyContent: 'center',
 	    alignItems: 'center',
-	    padding:10
+	    padding:10,
+	    textAlign: 'center'
+
 	},
 	buttonText:{
 		color:"white",
-		fontSize:16,
+		fontSize:14,
 		textAlign: 'center',
 	    fontWeight: "bold",
-	    marginTop:3
+	    marginTop:3,
+	    alignItems: 'center',
+	    width:280
+
 	}
 })
 export {Styles}

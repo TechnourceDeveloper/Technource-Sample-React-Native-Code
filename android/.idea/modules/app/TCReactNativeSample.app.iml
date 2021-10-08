@@ -135,6 +135,7 @@
     <orderEntry type="module" module-name="TCReactNativeSample.react-native-bootsplash" />
     <orderEntry type="module" module-name="TCReactNativeSample.react-native-gesture-handler" />
     <orderEntry type="module" module-name="TCReactNativeSample.react-native-safe-area-context" />
+    <orderEntry type="module" module-name="TCReactNativeSample.react-native-sqlite-storage" />
     <orderEntry type="module" module-name="TCReactNativeSample.react-native-vector-icons" />
   </component>
 </module>

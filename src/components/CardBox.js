@@ -43,9 +43,10 @@ const _editCard = () => {
          <View style={styles.extraInfoContainer}>
           <View style={styles.subTitleContainer}>
           <Text style={styles.txtSubDesc}>{"Card Number : "+cards.number}</Text>
-            <Text style={styles.txtSubDesc}>{"Expiry Date : "+cards.date}</Text>
+            <Text style={styles.txtSubDesc}>{"Expiry Date : "+cards.month+" / "+cards.year}</Text>
             <Text style={styles.txtSubDesc}>{"CVV : "+cards.cvv}</Text>
-            <Text style={styles.txtSubDesc}>{"Limit : "+cards.card_limit}</Text>
+            <Text style={styles.txtSubDesc}>{"Card Limit : "+cards.card_limit}</Text>
+            <Text style={styles.txtSubDesc}>{"Remaing Limit : "+cards.remains_limit}</Text>
           </View>
           <TouchableOpacity
               style = {styles.container}

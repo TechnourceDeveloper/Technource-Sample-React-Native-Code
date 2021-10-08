@@ -58,7 +58,7 @@ const ChildDetails  = ({route, navigation}) =>
 					          	showMessage({
 						          message: "Removed Successfully",
 						          type: "default",
-						          backgroundColor: "#0F0", // background color
+						          backgroundColor: "#1E6BB9", // background color
 						          color: "#FFF", // text color
 						        });
 					          		setCardId(0)
@@ -84,21 +84,21 @@ const ChildDetails  = ({route, navigation}) =>
 
 			db.transaction((tx) => {
 			      tx.executeSql(
-			        'SELECT card_limit FROM table_card where id = ?',
+			        'SELECT remains_limit FROM table_card where id = ?',
 			        [cardId],
 			        (tx, results) => {
 			          var temp = [];
 			          for (let i = 0; i < results.rows.length; ++i)
 			            temp.push(results.rows.item(i));
 
-			        console.log("card_limit ",parseFloat(temp[0].card_limit))
+			        console.log("remains_limit ",parseFloat(temp[0].remains_limit))
 
-			        if(parseFloat(temp[0].card_limit)>=parseFloat(limit)){
-			        	 var new_limit = parseFloat(temp[0].card_limit) - parseFloat(limit)
+			        if(parseFloat(temp[0].remains_limit)>=parseFloat(limit)){
+			        	 var new_limit = parseFloat(temp[0].remains_limit) - parseFloat(limit)
 				        console.log('limit ',new_limit);
 				          db.transaction((tx) => {
 					      tx.executeSql(
-					        'UPDATE table_card set card_limit=? where id=?',
+					        'UPDATE table_card set remains_limit=? where id=?',
 					        [new_limit, cardId],
 					        (tx, results) => {
 					          console.log('Results', results.rowsAffected);
@@ -106,7 +106,7 @@ const ChildDetails  = ({route, navigation}) =>
 					          		showMessage({
 							          message: "Pay Successfully",
 							          type: "default",
-							          backgroundColor: "#0F0", // background color
+							          backgroundColor: "#1E6BB9", // background color
 							          color: "#FFF", // text color
 							        });
 					          		setCardId(0)
@@ -147,7 +147,7 @@ const ChildDetails  = ({route, navigation}) =>
 
 		const _removeCard = () => {
 		    showAlertMessage({
-		      message: 'Are you sure to delete this Child',
+		      message: 'Are you sure to delete this Card?',
 		      rejectAction: hideAlertMessage,
 		      buttonType: 'YN'
 		    })

@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import {Styles} from './Styles'
 import { Formik } from "formik";
 import * as yup from 'yup'
@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setStage} from '../../store/actions/stage';
 import { showMessage, hideMessage } from "react-native-flash-message";
 import { CustomInput } from '../../components/CustomInput'
+import {Input} from 'react-native-elements'
 
 import { openDatabase } from 'react-native-sqlite-storage';
 var db = openDatabase({ name: 'UserDatabase.db' });
@@ -22,27 +23,36 @@ const CardAddEdit = ({route,navigation}) =>
 	    name: '',
 	    child_id :'', 
 	    number: '',
-	    date: '', 
+	    month: '', 
+	    year: '', 
 	    cvv: '',
-	    limit: ''
+	    limit: '',
+	    remains_limit: ''
 	  })
 
 	const _cardValidationSchema = yup.object().shape({
 			name: yup
 			  .string()
-			  .required("Please enter name"),
-			date: yup
+			  .required("Name required*"),
+			month: yup
 			  .string()
-			  .required("Please enter expiry date"),
+			   .min(2,"2 digit required*")
+			  .required("Month required*"),
+			year: yup
+			  .string()
+			  .min(4,"4 digit required*")
+			  .required("Year required*"),
 			cvv: yup
 			  .string()
-			  .required("Please enter cvv"),
+			  .min(3,"3 digit required*")
+			  .required("CVV required*"),
 			number: yup
 			  .string()
-			  .required("Please enter number"),
+			  .min(16,"16 digit required*")
+			  .required("Card Number required*"),
 			limit: yup
 			  .string()
-			  .required("Please enter limit"),
+			  .required("Limit required*"),
 		  })
 
 	 useEffect(() => {
@@ -66,9 +76,11 @@ const CardAddEdit = ({route,navigation}) =>
 					         name: temp[0].name,
 						    child_id :temp[0].chid_id, 
 						    number: temp[0].number,
-						    date: temp[0].date, 
+						    month: temp[0].month, 
+						    year:temp[0].year,
 						    cvv: temp[0].cvv,
-						    limit: temp[0].card_limit
+						    limit: temp[0].card_limit,
+						    remains_limit:temp[0].remains_limit
 					      }
 					    })
 			        },(err)=>{
@@ -79,20 +91,66 @@ const CardAddEdit = ({route,navigation}) =>
 	  	}
 		}, []);
 
-	 const _addCard = ({name,number,date,cvv,limit}) => {
+	 const _addCard = ({name,number,month,cvv,limit,year}) => {
+
+
+	 	 var mon = new Date().getMonth() + 1;
+      	 var yr = new Date().getFullYear();
+
+      	  if(parseInt(month)<1 || parseInt(month)>12){
+      	 	showMessage({
+			        message: "Error",
+			        description: "Month should be 01 to 12",
+			        type: "default",
+			        backgroundColor: "#F00", // background color
+			        color: "#FFF", // text color
+			      });
+				return
+      	 }
+
+      	 if(mon>parseInt(month) && yr == parseInt(year)){
+				showMessage({
+			        message: "Error",
+			        description: "Card Expiry date is not valid",
+			        type: "default",
+			        backgroundColor: "#F00", // background color
+			        color: "#FFF", // text color
+			      });
+				return
+      	 }
+
+      	
+
+      	 else if(yr > parseInt(year)){
+      	 	showMessage({
+			        message: "Error",
+			        description: "Card Expiry date is not valid",
+			        type: "default",
+			        backgroundColor: "#F00", // background color
+			        color: "#FFF", // text color
+			      });
+      	 	return
+      	 }
+
+      	 if(card.limit != limit){
+      	 	card.remains_limit = limit
+      	 }
+
+
 	 	console.log("_addCard ")
 	 	if(id != ''){
+
 			db.transaction(function (tx) {
 		      tx.executeSql(
-			        'UPDATE table_card set name=?, child_id = ?,number = ?, date = ?, cvv = ?, card_limit = ?  where id=?',
-			        [name,chid_id,number,date,cvv,limit,id],
+			        'UPDATE table_card set name=?, child_id = ?,number = ?, month = ?, year = ?, cvv = ?, card_limit = ?, remains_limit=?  where id=?',
+			        [name,chid_id,number,month,year,cvv,limit,card.remains_limit,id],
 			        (tx, results) => {
 			          console.log('Results', results.rowsAffected);
 			          if (results.rowsAffected > 0) {
 			          	showMessage({
 						          message: "Update Successfully",
 						          type: "default",
-						          backgroundColor: "#0F0", // background color
+						          backgroundColor: "#1E6BB9", // background color
 						          color: "#FFF", // text color
 						        });
 			           	navigation.goBack()
@@ -116,15 +174,15 @@ const CardAddEdit = ({route,navigation}) =>
 	 		console.log("_addCard 2")
 	 		db.transaction(function (tx) {
 		      tx.executeSql(
-			        'INSERT INTO table_card (name,child_id,number,date,cvv,card_limit) VALUES (?,?,?,?,?,?)',
-			        [name,chid_id,number,date,cvv,limit],
+			        'INSERT INTO table_card (name, child_id, number, month, year,cvv,card_limit,remains_limit) VALUES (?,?,?,?,?,?,?,?)',
+			        [name,chid_id,number,month,year,cvv,limit,limit],
 			        (tx, results) => {
 			          console.log('Results', results.rowsAffected);
 			          if (results.rowsAffected > 0) {
 			          	showMessage({
 						          message: "Insert Successfully",
 						          type: "default",
-						          backgroundColor: "#0F0", // background color
+						          backgroundColor: "#1E6BB9", // background color
 						          color: "#FFF", // text color
 						        });
 			           	navigation.goBack()
@@ -150,10 +208,11 @@ const CardAddEdit = ({route,navigation}) =>
 
 		return(
 			<SafeAreaView style = {Styles.container}>
-				<View>
+				<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+				<View  style={{ flex: 1, justifyContent:'center', alignContent: 'center',alignItems:'center', alignSelf:'center' }}>
 				       
 						<Formik
-								initialValues={{ name: card.name, date: card.date, cvv: card.cvv, number: card.cvv, limit: card.limit }}
+								initialValues={{ name: card.name, month: card.month,year: card.year, cvv: card.cvv, number: card.number, limit: card.limit }}
 								onSubmit={values => _addCard(values)}
 								validationSchema={_cardValidationSchema}
 								enableReinitialize>
@@ -177,6 +236,7 @@ const CardAddEdit = ({route,navigation}) =>
 								onChangeText={handleChange('name')}
 								onBlur={() => setFieldTouched('name')}
 								value={values.name}
+								disabled = {id == ''?false:true}
 								errorMessage={touched.name && errors.name}
 							/>
 							<CustomInput
@@ -189,22 +249,49 @@ const CardAddEdit = ({route,navigation}) =>
 								onChangeText={handleChange('number')}
 								keyboardType='numeric'
 								onBlur={() => setFieldTouched('number')}
+								maxLength={16}
+								disabled = {id == ''?false:true}
 								value={values.number.toString()=='0'?"":values.number.toString()}
 								errorMessage={touched.number && errors.number}
 							/>
 
-							<CustomInput
-								placeholder="Enter Expiry Date"
-								placeholderTextColor="#bbbbbb"
-								autoCapitalize="none"
-								autoCorrect={false}
-								style={Styles.inputStyle}
-								returnKeyType='next'
-								onChangeText={handleChange('date')}
-								onBlur={() => setFieldTouched('date')}
-								value={values.date}
-								errorMessage={touched.date && errors.date}
-							/>
+							<View style={Styles.expiryDateContainer}>
+								<View>
+								<Input
+									placeholder="MM"
+									placeholderTextColor="#bbbbbb"
+									autoCapitalize="none"
+									autoCorrect={false}
+									style={Styles.dateInputStyle}
+									returnKeyType='next'
+									onChangeText={handleChange('month')}
+									onBlur={() => setFieldTouched('month')}
+									value={values.month}
+									disabled = {id == ''?false:true}
+									maxLength={3}
+									inputContainerStyle={{borderBottomWidth: 0,width:130}}
+									errorMessage={touched.month && errors.month}
+								/>
+								</View>
+								<View>
+
+								<Input
+									placeholder="YYYY"
+									placeholderTextColor="#bbbbbb"
+									autoCapitalize="none"
+									autoCorrect={false}
+									style={Styles.dateInputStyle}
+									returnKeyType='next'
+									maxLength={4}
+									disabled = {id == ''?false:true}
+									inputContainerStyle={{borderBottomWidth: 0,width:130}}
+									onChangeText={handleChange('year')}
+									onBlur={() => setFieldTouched('year')}
+									value={values.year}
+									errorMessage={touched.year && errors.year}
+								/>
+								</View>
+							</View>
 
 							<CustomInput
 								placeholder="Enter CVV"
@@ -213,6 +300,8 @@ const CardAddEdit = ({route,navigation}) =>
 								autoCorrect={false}
 								style={Styles.inputStyle}
 								returnKeyType='next'
+								maxLength={3}
+								disabled = {id == ''?false:true}
 								keyboardType='numeric'
 								onChangeText={handleChange('cvv')}
 								onBlur={() => setFieldTouched('cvv')}
@@ -244,6 +333,7 @@ const CardAddEdit = ({route,navigation}) =>
 								)}
 							</Formik>
 				</View>
+				</ScrollView>
 			</SafeAreaView>
 		);
 	}

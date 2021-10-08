@@ -5,9 +5,8 @@ import CardAddEdit from "./CardAddEdit/CardAddEdit";
 import ChildAddEdit from "./ChildAddEdit/ChildAddEdit";
 import ChildDetails from "./ChildDetails/ChildDetails";
 import ChildList from "./ChildList/ChildList";
-import Signup from "./Signup/Signup";
+import Start from "./Start/Start";
 import RNBootSplash from 'react-native-bootsplash';
-
 import FlashMessage from 'react-native-flash-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -63,7 +62,7 @@ const App = () => {
           </Stack.Navigator>
           :
           <Stack.Navigator headerMode="none">
-             <Stack.Screen name="Signup" component={Signup}  />
+             <Stack.Screen name="Start" component={Start}  />
           </Stack.Navigator>
         }
     </NavigationContainer>

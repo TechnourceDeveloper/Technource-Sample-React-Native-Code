@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   subTitleContainer: {marginTop: 5, marginBottom: 5},
   extraInfoContainer: {flexDirection: 'row',  width:'100%'},
   innerInfoContainer: {flexDirection: 'row',flex:1, justifyContent:'flex-end'},
-  txtTitle: {fontWeight: 'bold',flexDirection: 'row',flex:8, justifyContent:'flex-start'},
+  txtTitle: {fontWeight: 'bold',flexDirection: 'row',flex:8, justifyContent:'flex-start', color:'#000'},
   txtSubDesc: {marginTop: 10, flexWrap: 'wrap', color: '#000'},
   icon: {width: 15, height: 15},
 })

@@ -1,6 +1,0 @@
-module Pods_TCReactNativeSample_TCReactNativeSampleTests {
-  umbrella header "Pods-TCReactNativeSample-TCReactNativeSampleTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
