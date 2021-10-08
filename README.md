@@ -1,4 +1,4 @@
-# Technource-Sample-React-Native-Code
+# Technource Sample React Native Code
 
 ## Installation
 
