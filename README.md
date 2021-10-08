@@ -12,6 +12,7 @@ Run command npm install
 1. react-native run-android for run in android device
 
 ## IOS
-1. run command npx react-native run-ios for run in ios device
+1. install pod
+2. run command npx react-native run-ios for run in ios device
 
 
